@@ -1,0 +1,20 @@
+<h1>Number Converter 3000</h1>
+
+<% if @number.present? %>
+<p>In binary: <%= number_to_binary(@number) %></p>
+<% end %>
+
+<%= form_with(local: true) do |f| %>
+    <div>
+        <%= f.label :number, 'Enter you number: '%>
+        <%= f.text_field :number, value: @number %>
+    </div>
+
+    <div>
+        <%= f.label :base, 'Enter you base: '%>
+        <%= f.text_field :base, value: @base %>
+    </div>
+
+    <%= f.button 'Convert'%>
+
+    <% end %>
