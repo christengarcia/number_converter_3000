@@ -1,24 +1,43 @@
-# README
+# Number Converter 3000
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- The below is the form look like the below :
+#Wireframe
+Enter your number:
+[.............]
 
-Things you may want to cover:
+Convert to base:
+[.............]
 
-* Ruby version
+[convert]
 
-* System dependencies
+- display the result as below :-
+5609 in base 16 is 15E9
 
-* Configuration
+## Controllers
+- name for the controllers is NumberConverter
+- generate empty controller file with def index using 'rails g controller NumberConverter index' 
+-             --> this will create app > controller, app > view and config > routes without model.
+- display the form
 
-* Database creation
 
-* Database initialization
+- number conversion
+- input_number
+- base
 
-* How to run the test suite
+<!-- ================================================= -->
+# Challenge
 
-* Services (job queues, cache servers, search engines, etc.)
+## Create a model NumberConversion for each save in database for each conversion
+- input_number
+- base
 
-* Deployment instructions
+## Add a history list to NumberConverter#Index
 
-* ...
+
+## Add Bootstrap 4
+
+## Add /base/5
+## Add /base/9
+## Add /base/16
+## Add /base/:base -> params[:base]
+<!-- ================================================= -->

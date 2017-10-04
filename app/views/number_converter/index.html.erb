@@ -1,7 +1,8 @@
 <h1>Number Converter 3000</h1>
 
 <% if @number.present? %>
-<p>In binary: <%= number_to_binary(@number) %></p>
+    <p>In base <%= @base %>:
+    <%= number_to_base(@number, @base) %></p>
 <% end %>
 
 <%= form_with(local: true) do |f| %>
