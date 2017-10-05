@@ -1,11 +1,10 @@
 class NumberConverterController < ApplicationController
   def index
     safe_params = params.permit(:number, :base)
-    # If we are submitting the form
-    if !safe_params.empty?
-      @number = safe_params[:number].to_i
-      @base = safe_params[:base].to_i
-
-    end
+   
+      @number_conversion = NumberConversion.new(number: number, base: base)
+      @number_conversion.save
+      
+      @past_conversion = NumberConversion.all
   end
 end
