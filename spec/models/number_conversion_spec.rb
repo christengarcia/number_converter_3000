@@ -63,6 +63,8 @@ RSpec.describe NumberConversion, type: :model do
     expect(NumberConversion.new(number: 5, base: 0)).to be_invalid
     expect(NumberConversion.new(number: 5, base: 1)).to be_invalid
     expect(NumberConversion.new(number: 5, base: 'abc')).to be_invalid
+    expect(NumberConversion.new(number: 5, base: 37)).to be_invalid
+    expect(NumberConversion.new(number: 5, base: 555)).to be_invalid
   end
 
   it "should disallow missing required attributes" do

@@ -1,10 +1,10 @@
 class NumberConverterController < ApplicationController
   def index
-    safe_params = params.permit(:number, :base)
+      safe_params = params.permit(:number, :base)
    
-      @number_conversion = NumberConversion.new(number: number, base: base)
-      @number_conversion.save
-      
-      @past_conversion = NumberConversion.all
+      @number_conversion = NumberConversion.new(safe_params)
+      @number_conversion.save if request
+
+      @past_conversions = NumberConversion.all.order(created_at: :desc)
   end
 end

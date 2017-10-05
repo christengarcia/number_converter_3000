@@ -1,17 +1,17 @@
 <h1>Number Converter 3000</h1>
 
 <p>
-<%= pluralize(@past_conversions.count, 'conversion') %>
+<% pluralize(@past_conversions.count, 'conversions') %>
 </p>
 
-<% if @number_conversion.valid? %>
+<% if @number_conversion.errors.any? %>
+    <% @number_conversion.errors.full_messages.each do |message| %>
+     <p class="alert alert-danger"><%= message %></p>
+    <% end %>
+<% elsif @number_conversion.valid? %>
     <p>In base <%= @number_conversion.base %>:
     <%= @number_conversion.result %></p>
-<% else %
-    <%= @number_conversion.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
     <% end %>
-<% end %>
 
 <%= form_with(local: true) do |f| %>
     <div>
@@ -24,6 +24,19 @@
         <%= f.text_field :base, value: @base %>
     </div>
 
-    <%= f.button 'Convert'%>
+    <%= f.button 'Convert', class: 'btn btn-primary' %>
 
-    <% end %>
+<% end %>
+
+<h2>History</h2>
+<div>
+<% @past_conversions.each_with_index do |conversion, index| %>
+    <div class="card <%= index.odd? ? 'big-dark text-dark' : 'big-warning' %>">
+    <div class="card-body">
+        <%= conversion.number %><sub>10</sub>
+        =
+        <%= conversion.result %><sub><%= conversion.base %></sub>
+        </div>
+    </div>
+<% end %>
+</div>
